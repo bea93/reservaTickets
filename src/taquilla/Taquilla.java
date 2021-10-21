@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package taquilla;
 
+import java.lang.System.Logger;
 import java.util.Scanner;
+import java.util.logging.LogManager;
 
 /**
  *
@@ -13,10 +10,9 @@ import java.util.Scanner;
  */
 public class Taquilla {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+    	
+    	Logger logger = LogManager.getLogger(Taquilla.class);
         Scanner teclado = new Scanner(System.in);
 
         int opcionMenu, fila, columna;
@@ -24,27 +20,31 @@ public class Taquilla {
 
         renfe.crearTren();
         
+        logger.info("INICIO DE LA APLICACIÓN");
+        
         do {
             System.out.println("1. Mostrar asientos");
             System.out.println("2. Comprar billete disponible");
             System.out.println("3. Comprar billete al gusto");
             System.out.println("0. SALIR");
-            System.out.print("Introduzca opciÃ³n: ");
+            System.out.print("Introduzca opción: ");
             opcionMenu = teclado.nextInt();
             teclado.nextLine();
 
             switch (opcionMenu) {
                 case 1: 
                     renfe.mostrarTren();
+                    logger.info("OPCIÓN " + opcionMenu);
                     break;
                 case 2:
-                    System.out.println("Su nÃºmero de asiento es: " + renfe.asientoLibre());
+                    System.out.println("Su número de asiento es: " + renfe.asientoLibre());
                     renfe.mostrarTren();
+                    logger.info("OPCIÓN 2" + opcionMenu);
                     break;
                 case 3:
-                    System.out.println("Introduzca nÃºmero de fila: ");
+                    System.out.println("Introduzca número de fila: ");
                     fila = teclado.nextInt();
-                    System.out.println("Introduzca nÃºmero de columna: ");
+                    System.out.println("Introduzca número de columna: ");
                     columna = teclado.nextInt();
                     
                     if (renfe.asientoADemanda(fila, columna)) {
@@ -54,13 +54,14 @@ public class Taquilla {
                     }
                     teclado.nextLine();
                     renfe.mostrarTren();
+                    logger.info("OPCIÓN 3" + opcionMenu);
                     break;
 
                 case 0:
                     System.out.println("Hasta luego");
                     break;
                 default:
-                    System.out.println("OPCIÃ“N INCORRECTA");
+                    System.out.println("OPCIÓN INCORRECTA");
             }
         } while (opcionMenu != 0);
     }

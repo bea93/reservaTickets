@@ -1,14 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package taquilla;
+
+import java.lang.System.Logger;
+import java.util.logging.LogManager;
+
 /**
  *
  * @author Bea
  */
 public class Tren {
+	Logger logger = LogManager.getLogger(Tren.class);
+	
     String [][] tren = new String[10][4];
     
     public void crearTren() {
